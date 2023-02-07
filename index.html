@@ -6,26 +6,77 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="./dist/styles.css">
-        <title>BRS</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+        <!-- Times New Roman replacement -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tinos">
+
+
+        <title>Blockchain Research Symposium</title>
+        <script>
+            $(document).ready(function(){
+                console.log("hi");
+                var sectionIds = $('a.nav-link');
+
+                $(document).scroll(function(){
+                    sectionIds.each(function(){
+
+                        var container = $(this).attr('href');
+                        var containerOffset = $(container).offset().top;
+                        var containerHeight = $(container).outerHeight();
+                        var containerBottom = containerOffset + containerHeight;
+                        var scrollPosition = $(document).scrollTop();
+
+                        if(scrollPosition < containerBottom - 20 && scrollPosition >= containerOffset - 20){
+                            // Remove all other <actives></actives>
+                            sectionIds.each(function(){
+                                $(this).removeClass('border-[FFB800]');
+                                $(this).addClass('border-white');
+                            });
+                            $(this).addClass('border-[FFB800]');
+                            $(this).removeClass('border-white');
+                        }
+                    });
+                });
+            });
+            </script>
     </head>
     <body class="relative">
-        <header class="flex space-around items-center h-20 p-9">
-            <div class="">
+        <header class="fixed flex justify-between items-center h-20 p-9 bg-white w-full z-20">
+            <div class="flex font-[Tinos] items-center">
+                <div class="font-bold text-5xl">
+                    BRS
+                </div>
+                <div class="border-r border-black h-11 px-2"></div>
+                <div class="ml-4 text-[10px]">
+                    BLOCKCHAIN <br/>
+                    RESEARCH<br/>
+                    SYMPOSIUM<br/>
+                </div>
             </div>
-            <div class="flex-1"></div>
-            <ul class="flex space-x-4">
-                <li class="hover:border-b-4 hover:border-[FFB800]"><a href="#">Home</a></li>
-                <li class="hover:border-b-4 hover:border-[FFB800]"><a href="#">About</a></li>
-                <li class="hover:border-b-4 hover:border-[FFB800]"><a href="#">Services</a></li>
-                <li class="hover:border-b-4 hover:border-[FFB800]"><a href="#">Contact</a></li>
-            </ul>
-            <div class="flex-1"></div>
+            <div class="flex space-x-4 tracking-wider font-bold">
+                <a href="#home" class="border-b-4 border-[FFB800] hover:border-[FFB800] nav-link">HOME</a>
+                <a href="#scheldue" class="border-b-4 hover:border-[FFB800] border-white nav-link">SCHELDUE</a>
+                <a href="#speaker" class="border-b-4 hover:border-[FFB800] border-white nav-link">SPEAKERS</a>
+                <a href="#venue" class="border-b-4 hover:border-[FFB800] border-white nav-link">VENUE</a>
+            </div>
+            <div class="font-bold py-3 px-20 border border-black tracking-widest">
+                RSVP
+            </div>
         </header>
-        <div class="flex bg-[FFB800] h-16 items-center p-9">
+        <!-- Hack -->
+        <div id="home" class="flex bg-[FFB800] h-16 items-center p-9">
             <div>AT THE UNIVERSITY OF TEXAS, AUSTIN</div>
             <div class="flex-1"></div>
             <div>IN CONJUNCTION WITH CONSENSUS 2023</div>
         </div>
+        <div id="home" class="flex bg-[FFB800] h-16 items-center p-9">
+            <div>AT THE UNIVERSITY OF TEXAS, AUSTIN</div>
+            <div class="flex-1"></div>
+            <div>IN CONJUNCTION WITH CONSENSUS 2023</div>
+        </div>
+        <!-- Hack -->
         <div class="flex">
             <img class="overflow-hidden h-[40vh]" src="public/hero.png" alt=""/>
         </div>
@@ -52,7 +103,7 @@
                     <p class="text-sm -translate-y-2">Talks by Researchers and Entrepreneurs</p>
                     <div class="flex space-x-6">
                         <img src="public/event1.png" alt=""/>
-                        <p class="text-xl max-w-lg">
+                        <p class="text-xl max-w-lg font-[Tinos]">
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
                         </p>
                     </div>
@@ -62,7 +113,7 @@
                     <p class="text-sm -translate-y-2">Panel on Blockchain Education and Research</p>
                     <div class="flex space-x-6">
                         <img src="public/event2.png" alt=""/>
-                        <p class="text-xl max-w-lg">
+                        <p class="text-xl max-w-lg font-[Tinos]">
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
                         </p>
                     </div>
@@ -72,7 +123,7 @@
                     <p class="text-sm -translate-y-2">Poster Session by Students and Reception</p>
                     <div class="flex space-x-6">
                         <img src="public/event3.png" alt=""/>
-                        <p class="text-xl max-w-lg">
+                        <p class="text-xl max-w-lg font-[Tinos]">
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
                         </p>
                     </div>
@@ -80,17 +131,17 @@
             </div>
         </article>
         <div class="py-32"></div>
-        <article class="bg-[FFB800] h-[50vh] relative">
+        <article id="scheldue" class="bg-[FFB800] h-[50vh] relative">
 
             <div class="flex absolute left-96 h-[50vh] bg-white pt-14 pb-10 px-20">
                 <div class="">
                     <p class="text-right text-3xl">
                         The goal of this event is <br>
-                        to bring researchers in information <br>
+                            to bring researchers in information <br>
                         <span class="font-extrabold"> technology together from across <br>
                             the globe. </span>
                     </p>
-                    <p class="text-xl text-right">
+                    <p class="text-xl text-right font-[Tinos]">
                         Lorem ipsum dolor sit amet, consectetuer <br/>
                         adipiscing elit, sed diam nonummy nibh euismod <br/>
                         tincidunt ut laoreet dolore magna aliquam erat <br/>
@@ -103,7 +154,7 @@
 
         </article>
 
-        <article class="px-44 mt-20">
+        <article id="speaker" class="px-44 mt-20">
             <p class="text-2xl"> Featuring the most exclusive <br/> <span class="font-bold">Keynote Speakers </span></p>
             <div class="py-4">
             </div>
@@ -123,12 +174,12 @@
                     <div class="border border-black px-5 py-3">Learn More</div>
                 </div>
                 <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
+                <img src="public/pfp.png" alt="">
+                <p>Sriram Vishwanath</p>
+                <p>POSITION AND CURRENT <br/>
+                    ROLE OR ANYTHING</p>
+                <div class="border border-black px-5 py-3">Learn More</div>
+            </div>
                 <div class="flex flex-col items-center text-center">
                     <img src="public/pfp.png" alt="">
                     <p>Sriram Vishwanath</p>
@@ -202,13 +253,13 @@
             <div class="bg-[FFB800] h-6 w-full mt-6"></div>
         </article>
 
-        <article class="px-44 mt-20">
+        <article id="venue" class="px-44 mt-20">
             <p class="text-3xl">The event will be hosted at UT’s <br/>
                 <span class="font-bold">Engineering Education and Research Center </span></p>
             <div class="flex space-x-4">
                 <div>
                     <p class="font-bold">UT CAMPUS </p>
-                    <p>2501 SPEEDWAY, <br/>
+                    <p class="font-[Tinos]">2501 SPEEDWAY, <br/>
                         AUSTIN, TX 78712 <br/>
                         <br/><br/>
                         HOSTED AT THE UNIVERSITY OF TEXAS AT AUSTIN IN EER, AT THE MULVA AUDITORIUM</p>
@@ -258,11 +309,66 @@
                 </div>
             </div>
         </article>
+        <footer>
+            <div class="bg-[FFB800] h-6 w-full"></div>
+            <div class="bg-[url('/public/footer-img.png')] h-[30vh] text-white px-9">
+                <div class="flex font-[Tinos] items-center">
+                    <div class="font-bold text-5xl">
+                        BRS
+                    </div>
+                    <div class="border-r border-black h-11 px-2"></div>
+                    <div class="ml-4 text-[10px]">
+                        BLOCKCHAIN <br/>
+                        RESEARCH<br/>
+                        SYMPOSIUM<br/>
+                    </div>
+                </div>
 
+                <div class="flex justify-between">
+                    <p class="text-xs">AT THE UNIVERSITY OF TEXAS, AUSTIN</p>
+                    <p class="text-sm">IN CONJUNCTION WITH CONSENSUS 2023</p>
+                </div>
+
+                <div class="p-3"></div>
+
+                <div class="text-xl">
+                    <p class="font-semibold">WEDNESDAY, APRIL 26, 2023, 9:00 AM - 6:30 PM </p>
+                    <p>Engineering Education and Research Center</p>
+                    <div class="w-full flex justify-between items-center">
+                        <p class="max-w-3xl font-[Tinos]">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad</p>
+                        <div class="border-2 px-12 py-3 text-center text-base font-bold bg-black border-white text-white inline-block">
+                            RSVP
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="bg-[FFB800] vh-20 w-full">
+                <div class="flex justify-between px-20">
+                    <div>
+                        <div class="flex font-[Tinos] items-center">
+                            <div class="font-bold text-5xl">
+                                BRS
+                            </div>
+                            <div class="border-r border-black h-11 px-2"></div>
+                            <div class="ml-4 text-[10px]">
+                                BLOCKCHAIN <br/>
+                                RESEARCH<br/>
+                                SYMPOSIUM<br/>
+                            </div>
+                        </div>
+                        <p>AT THE UNIVERSITY OF TEXAS, AUSTIN</p>
+                        <p>© 2022</p>
+                        <p class="max-w-sm">This is a paragraph with more information about something important. This something has many uses and is made of 100% recycled material.</p>
+                    </div>
+                    <div>
+                        <p>About us</p>
+                        <p>Terms of Service</p>
+                        <p>Community</p>
+                        <p class="text-white">Privacy Policy</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </body>
-
-
-
-
-        <div class="h-56"></div>
 </html>
