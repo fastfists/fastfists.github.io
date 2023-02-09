@@ -14,6 +14,8 @@
 
 
         <title>Blockchain Research Symposium</title>
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARfVVqVNAIYVlRE4fDTYov5vpBgLnIF5s&callback=initMap"> </script>
+
         <script>
             $(document).ready(function(){
                 console.log("hi");
@@ -39,8 +41,24 @@
                         }
                     });
                 });
+
             });
-            </script>
+            function initMap() {
+                geocoder = new google.maps.Geocoder();
+                let map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 40.7128, lng: -74.0060},
+                    zoom: 16
+                });
+                let marker = new google.maps.Marker({
+                    map,
+                });
+                geocoder.geocode({ address: "2501 SPEEDWAY,AUSTIN, TX 78712"}).then((response) => {
+                    console.log("got resp", response);
+                    map.setCenter(response.results[0].geometry.location);
+                    marker.setPosition(response.results[0].geometry.location);
+                });
+            }
+        </script>
     </head>
     <body class="relative">
         <header class="fixed flex justify-between items-center h-20 p-9 bg-white w-full z-20">
@@ -266,7 +284,7 @@
 
                     <div class="border border-black px-5 py-3">GOOGLE MAPS</div>
                 </div>
-                <img src="public/temp-img.png" alt="">
+                <div id="map" class="h-[60vh] w-full"></div>
             </div>
         </article>
 
