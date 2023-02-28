@@ -1,409 +1,162 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="./dist/styles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        <!-- Times New Roman replacement -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tinos">
+    <link rel="stylesheet" href="./dist/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans"
+    />
 
-
-        <title>Blockchain Research Symposium</title>
-        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARfVVqVNAIYVlRE4fDTYov5vpBgLnIF5s&callback=initMap"> </script>
-
-        <script>
-        $(document).ready(function(){
-            console.log("hi");
-            var sectionIds = $('a.nav-link');
-
-            $(document).scroll(function(){
-                sectionIds.each(function(){
-
-                    var container = $(this).attr('href');
-                    var containerOffset = $(container).offset().top;
-                    var containerHeight = $(container).outerHeight();
-                    var containerBottom = containerOffset + containerHeight;
-                    var scrollPosition = $(document).scrollTop();
-
-                    if(scrollPosition < containerBottom - 20 && scrollPosition >= containerOffset - 20){
-                        // Remove all other <actives></actives>
-                        sectionIds.each(function(){
-                            $(this).removeClass('border-[FFB800]');
-                            $(this).addClass('border-white');
-                        });
-                        $(this).addClass('border-[FFB800]');
-                        $(this).removeClass('border-white');
-                    }
-                });
-            });
-
-        });
-        function initMap() {
-            geocoder = new google.maps.Geocoder();
-            let map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 40.7128, lng: -74.0060},
-                zoom: 16
-            });
-            let marker = new google.maps.Marker({
-                map,
-            });
-            geocoder.geocode({ address: "2501 SPEEDWAY,AUSTIN, TX 78712"}).then((response) => {
-                console.log("got resp", response);
-                map.setCenter(response.results[0].geometry.location);
-                marker.setPosition(response.results[0].geometry.location);
-            });
-        }
-        </script>
-    </head>
-    <body class="relative">
-        <header class="fixed flex justify-between items-center h-20 p-4 bg-white w-full z-20">
-            <div class="flex font-[Tinos] items-center">
-                <div class="font-bold text-2xl md:text-4xl">
-                    BRS
-                </div>
-                <div class="border-r border-black h-11 px-1 md:px-2"></div>
-                <div class="ml-2 md:ml-3 text-[8px] md:text-[10px]">
-                    BLOCKCHAIN <br/>
-                    RESEARCH<br/>
-                    SYMPOSIUM<br/>
-                </div>
-            </div>
-            <div class="md:flex space-x-4 tracking-wider font-bold hidden">
-                <a href="#home" class="border-b-4 border-[FFB800] hover:border-[FFB800] nav-link">HOME</a>
-                <a href="#scheldue" class="border-b-4 hover:border-[FFB800] border-white nav-link">SCHELDUE</a>
-                <a href="#speaker" class="border-b-4 hover:border-[FFB800] border-white nav-link">SPEAKERS</a>
-                <a href="#poster" class="border-b-4 hover:border-[FFB800] border-white nav-link">POSTER</a>
-                <a href="#venue" class="border-b-4 hover:border-[FFB800] border-white nav-link">VENUE</a>
-            </div>
-            <a href="www.google.com" class="font-bold py-3 px-12 border border-black tracking-widest hover:text-white hover:bg-black hover:border-white">
-                RSVP
-            </a>
-        </header>
-        <!-- Hack -->
-        <div id="home" class="text-2xs md:text-base flex bg-[FFB800] h-16 items-center p-9">
-            <div>AT THE UNIVERSITY OF TEXAS, AUSTIN</div>
-            <div class="flex-1"></div>
-            <div>IN CONJUNCTION WITH CONSENSUS 2023</div>
+    <title>ChainHub - THE WEB3 INCUBATOR FOUNDATION</title>
+  </head>
+  <body class="bg-black text-white">
+    <header
+      class="fixed flex h-28 w-full items-center justify-between bg-black px-20"
+    >
+      <div class="flex space-x-2">
+        <img src="./public/logo.svg" alt="ChainHub" />
+        <div>
+          <span class="text-4xl">
+            <span class="font-bold">Chain</span
+            ><span class="font-thin">Hub</span>
+          </span>
+          <div class="text-yellow-500">THE WEB3 INCUBATOR FOUNDATION</div>
         </div>
-        <div id="home" class="text-xs p-3 sm:text-base sm:flex bg-[FFB800] h-16 items-center sm:p-9">
-            <div>AT THE UNIVERSITY OF TEXAS, AUSTIN</div>
-            <div class="py-1 sm:py-0 sm:flex-1"></div>
-            <div>IN CONJUNCTION WITH CONSENSUS 2023</div>
+      </div>
+      <div class="hidden space-x-4 font-bold tracking-wider md:flex">
+        <a class="">ABOUT</a>
+        <a class="">PARTNERSHIPS</a>
+        <a class="">RESERACH</a>
+      </div>
+      <a class="border border-yellow-400 py-3 px-12 font-bold text-yellow-400">
+        APPLY NOW
+      </a>
+    </header>
+    <!-- Hack -->
+    <div
+      id="home"
+      class="h-28 items-center bg-[FFB800] p-3 text-xs sm:flex sm:p-9 sm:text-base"
+    ></div>
+    <div
+      id="home"
+      class="h-16 items-center bg-black p-3 text-xs sm:flex sm:p-9 sm:text-base"
+    >
+      <div>AT THE UNIVERSITY OF TEXAS, AUSTIN</div>
+      <div class="py-1 sm:flex-1 sm:py-0"></div>
+      <div>IN CONJUNCTION WITH CONSENSUS 2023</div>
+    </div>
+    <!-- End Hack -->
+    <div class="flex w-full items-center bg-yellow-500">
+      <div
+        class="mx-auto flex max-w-5xl flex-col bg-yellow-500 py-20 align-middle text-black"
+      >
+        <h1 class="text-8xl font-extrabold leading-snug tracking-widest">
+          Incubating the Frontiers of Web3
+        </h1>
+
+        <div class="flex max-w-5xl">
+          <p>NOW CALLING FOR APPLICANTS</p>
+          <div class="flex-grow"></div>
+          <button>Learn More</button>
         </div>
-        <!-- Hack -->
-        <div class="h-[40vh] p-10 bg-[length:100%_100vh] bg-no-repeat bg-center sm:p-28" style="background-image: url('public/hero.jpg')">
-            <p class="max-w-screen-xl">
-                <span class="bg-black/80 text-white text-2xl leading-loose sm:text-4xl lg:text-5xl max-w-sm">
-                    The First <span class="font-bold">Blockchain Research Symposium</span>
-                    in Conjunction with Consensus 2023.
-                </span>
+      </div>
+    </div>
+
+    <section class="mx-auto max-w-5xl">
+      <div class="flex">
+        <p class="font-medium text-5xl">Where Web3 & academia build, pitch, and grow.</p>
+        <div class="border border-yellow-400"></div>
+        <div>
+          <div>
+            <p>OUR MISSION</p>
+            <p>
+              our mission is to support non-profit and academic blockchain
+              organizations with the infrastructure to back web3 founders with
+              grant and seed funding.
             </p>
-        </div>
-        <article  id="scheldue" class="bg-[FFB800] p-8 pr-14 mx-10 md:mx-20 -translate-y-10 md:-translate-y-6 border-8 border-white">
-            <p class="font-semibold">WEDNESDAY, APRIL 26, 2023, 9:00 AM - 6:30 PM </p>
-            <p>Engineering Education and Research Center</p>
-            <div class="flex flex-col lg:flex-row">
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad</p>
-                <div class="p-3 md:p-0 flex-1"></div>
-                <a href="https://www.google.com" class="text-center font-bold py-3 px-20 bg-black border border-white text-white hover:text-black hover:bg-white">
-                    RSVP
-                </a>
-            </div>
-        </article>
-
-        <article class="mt-8 px-9 lg:px-44 ">
-            <p class="text-3xl md:text-5xl mb-14">
-                The First <span class="font-bold">Blockchain Research Symposium</span> in Conjunction with Consensus 2023.
+          </div>
+          <div>
+            <p>OUR VISION</p>
+            <p>
+              our vision is to expand our hubs across the world, backing
+              founders from all walks of life in building the decentralized
+              internet of tomorrow.
             </p>
-
-            <div class="flex flex-col space-y-5">
-                <section>
-                    <p class="font-semibold text-xl">9:00 AM - 5:00 PM</p>
-                    <p class="text-sm -translate-y-2">Talks by Researchers and Entrepreneurs</p>
-                    <div class="flex flex-col md:flex-row md:space-x-6">
-                        <img src="public/event1.png" alt=""/>
-                        <p class="text-xl max-w-lg font-[Tinos]">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-                        </p>
-                    </div>
-                </section>
-                <section>
-                    <p class="font-semibold text-xl">9:00 AM - 5:00 PM</p>
-                    <p class="text-sm -translate-y-2">Talks by Researchers and Entrepreneurs</p>
-                    <div class="flex flex-col md:flex-row md:space-x-6">
-                        <img src="public/event1.png" alt=""/>
-                        <p class="text-xl max-w-lg font-[Tinos]">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-                        </p>
-                    </div>
-                </section>
-                <section>
-                    <p class="font-semibold text-xl">9:00 AM - 5:00 PM</p>
-                    <p class="text-sm -translate-y-2">Talks by Researchers and Entrepreneurs</p>
-                    <div class="flex flex-col md:flex-row md:space-x-6">
-                        <img src="public/event3.png" alt=""/>
-                        <p class="text-xl max-w-lg font-[Tinos]">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-                        </p>
-                    </div>
-                </section>
-            </div>
-        </article>
-        <div class="p-10"></div>
-        <article class="bg-[FFB800] py-10 lg:py-0 lg:pl-32">
-            <div class="flex flex-col px-5 py-2 lg:flex-row w-fit bg-white lg:space-x-3">
-                <div class="w-fit">
-                    <p class="text-2xl lg:text-right">
-                        The goal of this event is to bring researchers in information
-                        <span class="font-extrabold"> technology together from across the globe.</span>
-                    </p>
-                    <p class="lg:text-right font-[Tinos]">
-                        Lorem ipsum dolor sit amet, consectetuer
-                        adipiscing elit, sed diam nonummy nibh euismod
-                        tincidunt ut laoreet dolore magna aliquam erat
-                        volutpat. Ut wisi enim ad minim veniam, quis
-                        nostrud exerci tation ullamcorper suscipit lobortis
-                    </p>
-                </div>
-                <img class="w-full m-0 lg:h-[50vh]" src="public/eer1.jpg" alt="">
-            </div>
-        </article>
-
-        <article id="speaker" class="mt-20">
-            <p class="text-2xl text-center mx-auto max-w-sm"> Featuring the most exclusive <span class="font-bold">Keynote Speakers </span></p>
-            <div class="py-4">
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:px-10 lg:grid-cols-5 gap-y-6">
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                <img src="public/pfp.png" alt="">
-                <p>Sriram Vishwanath</p>
-                <p>POSITION AND CURRENT <br/>
-                    ROLE OR ANYTHING</p>
-                <div class="border border-black px-5 py-3">Learn More</div>
-            </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="public/pfp.png" alt="">
-                    <p>Sriram Vishwanath</p>
-                    <p>POSITION AND CURRENT <br/>
-                        ROLE OR ANYTHING</p>
-                    <div class="border border-black px-5 py-3">Learn More</div>
-                </div>
-            </div>
-        </article>
-        <div id="poster" class="py-24">
+          </div>
         </div>
-        <article>
-            <div class="bg-[FFB800] h-6 w-full"></div>
-            <div class="p-6 md:p-10 lg:px-20 flex">
-                <div>
-                    <div class="text-bold text-4xl font-bold"> Poster Session </div>
-                    <div class="py-4"></div>
-                    <div>
-                        This event includes a poster section and a welcome
-                        reception.
-                    </div>
-                    <div class="py-2 flex-1"></div>
-                    <div>
-                        <a href="" class="border-2 px-12 py-3 text-center text-base font-bold bg-black border-white text-white hover:bg-white hover:text-black hover:border-black">
-                            Sign Up
-                        </a>
-                    </div>
-                </div>
-                <div class="flex-1"></div>
-                <img class="hidden md:block w-1/2 xl:w-2/4" src="public/poster.jpg" alt=""/>
-            </div>
-            <div id="venue" class="bg-[FFB800] h-6 w-full"></div>
-        </article>
+      </div>
+      <p>15 Start Ups</p>
+      <p>$35+ MILLION RAISED</p>
+      <p>
+        founded in 2021 by dr. sriram vishwanath, chainhub has become the
+        pre-eminent foundation to support university incubators across the
+        united states. our goal is to support incubators who strive to change
+        the world through innovation with disruptive technologies.
+      </p>
+    </section>
+    <section class="text-center">
+      <p class="text-3xl">Partners</p>
+      <p class="max-w-3xl mx-auto text-3xl text-gray-300">As a ChainHub Foundation partner Hub, you gain access to our domain expertise helping you navigate the challenges of building in Web3</p>
 
-        <article class="mt-6 px-2 md:px-10 lg:px-20">
-            <p class="text-xl lg:text-3xl mb-5">The event will be hosted at UT’s <br/>
-                <span class="font-extrabold">Engineering Education and Research Center </span></p>
-            <div class="flex flex-col lg:space-x-8 lg:flex-row">
-                <div>
-                    <p class="font-bold text-sm md:text-base lg:text-xl">UT CAMPUS </p>
-                    <p class="font-[Tinos] text-sm md:text-base lg:text-xl">2501 SPEEDWAY, <br/>
-                        AUSTIN, TX 78712 <br/>
-                        <br/></p>
-                    <p>Hosted at the University Of Texas at Austin in EER, at the Mulva auditorium</p></p>
-
-
-                    <div class="border border-black px-5 py-3 hidden">GOOGLE MAPS</div>
-                </div>
-                <div class="flex-grow"></div>
-                <div id="map" class="h-[300px] w-full"></div>
+      <div class="flex space-x-8 p-9 justify-center">
+        <div class="relative bg-white h-96 w-48">
+          <div class="absolute left-4 bottom-9 bg-black border-white border h-96 w-48 flex flex-col justify-center">
+            <p>Title Of Resource</p>
+          </div>
+          <div class="flex flex-col h-full pb-2">
+            <div class="flex-grow"></div>
+            <p class="text-black">LEARN MORE</p>
+          </div>
+        </div>
+        <div class="relative bg-white h-96 w-48">
+          <div class="absolute left-4 bottom-9 bg-black border-white border h-96 w-48 flex flex-col justify-center">
+            <p>Title Of Resource</p>
+          </div>
+          <div class="flex flex-col h-full pb-2">
+            <div class="flex-grow"></div>
+            <p class="text-black">LEARN MORE</p>
+          </div>
+        </div>
+        <div class="relative bg-white h-96 w-48">
+          <div class="absolute left-4 bottom-9 bg-black border-white border h-96 w-48 flex flex-col justify-center">
+            <p>Title Of Resource</p>
+          </div>
+          <div class="flex flex-col h-full pb-2">
+            <div class="flex-grow"></div>
+            <p class="text-black">LEARN MORE</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="p-96"></div>
+    <footer>
+      <div class="vh-20 w-full bg-[FFB800] pt-5 pb-20">
+        <div class="flex flex-col justify-between px-9">
+          <div class="flex items-center font-[Tinos]">
+            <div class="text-2xl font-bold">BRS</div>
+            <div class="h-7 border-r border-black px-1"></div>
+            <div class="ml-2 text-[8px] font-bold">
+              BLOCKCHAIN <br />
+              RESEARCH<br />
+              SYMPOSIUM<br />
             </div>
-        </article>
-        <div class="py-24"></div>
-        <article>
-            <p class="text-3xl text-center max-w-md mx-auto">
-                This event wouldn’t be possible without
-                <span class="font-bold">Our Sponsors</span>
-            </p>
-            <div class="py-6"></div>
-            <div class="grid grid-cols-2 px-5 md:grid-cols-3 m-auto gap-x-5 gap-y-4 max-w-2xl">
-                <div class="flex flex-col items-center">
-                    <img src="public/bytetrade.jpeg" alt="">
-                    <p class="font-bold">Byte Trade</p>
-                    <p>PARTNER</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <img src="public/coindesk.png" alt="">
-                    <p class="font-bold">Coin Desk</p>
-                    <p>PARTNER</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <img src="public/sponser.png" alt="">
-                    <p class="font-bold">Chainhub</p>
-                    <p>PARTNER</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <img src="public/sponser.png" alt="">
-                    <p class="font-bold">Byte Trade</p>
-                    <p>PARTNER</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <img src="public/polkadot.png" alt="">
-                    <p class="font-bold">Polkadot</p>
-                    <p>PARTNER</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <img src="public/sponser.png" alt="">
-                    <p class="font-bold">Byte Trade</p>
-                    <p>PARTNER</p>
-                </div>
-            </div>
-        </article>
-        <div class="py-24"></div>
-        <footer>
-            <div class="bg-[FFB800] h-6 mb-2 w-full"></div>
-            <div class="bg-[url('/public/footer-img.jpg')] h-[40vh] md:h-[30vh] text-white ">
-                <div class="backdrop-blur-sm bg-black/60 px-9 py-3 h-full w-full">
-                    <div class="flex font-[Tinos] items-center">
-                        <div class="font-bold text-2xl">
-                            BRS
-                        </div>
-                        <div class="border-r border-white h-7 px-1"></div>
-                        <div class="ml-2 text-[8px] font-bold">
-                            BLOCKCHAIN <br/>
-                            RESEARCH<br/>
-                            SYMPOSIUM<br/>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col md:flex-row justify-between">
-                        <p class="text-xs">AT THE UNIVERSITY OF TEXAS, AUSTIN</p>
-                        <p class="text-sm">IN CONJUNCTION WITH CONSENSUS 2023</p>
-                    </div>
-
-                    <div class="p-2"></div>
-                    <div class="text-md">
-                        <p class="font-semibold">WEDNESDAY, APRIL 26, 2023, 9:00 AM - 6:30 PM </p>
-                        <p>Engineering Education and Research Center</p>
-                        <div class="w-full flex flex-col md:flex-row justify-between items-center">
-                            <p class="max-w-3xl font-[Tinos]">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad</p>
-                            <a href="" class="border-2 px-12 py-3 text-center text-base font-bold bg-black border-white text-white hover:bg-white hover:text-black hover:border-black">
-                                RSVP
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-[FFB800] vh-20 w-full pt-5 pb-20">
-                <div class="flex flex-col justify-between px-9">
-                    <div class="flex font-[Tinos] items-center">
-                        <div class="font-bold text-2xl">
-                            BRS
-                        </div>
-                        <div class="border-r border-black h-7 px-1"></div>
-                        <div class="ml-2 text-[8px] font-bold">
-                            BLOCKCHAIN <br/>
-                            RESEARCH<br/>
-                            SYMPOSIUM<br/>
-                        </div>
-                    </div>
-                    <div class="p-3"></div>
-                    <p>AT THE UNIVERSITY OF TEXAS, AUSTIN</p>
-                    <div class="p-1"></div>
-                    <p>© 2023</p>
-                    <div class="p-1"></div>
-                    <p class="max-w-sm">This is a paragraph with more information about something important. This something has many uses and is made of 100% recycled material.</p>
-                </div>
-            </div>
-        </footer>
-    </body>
+          </div>
+          <div class="p-3"></div>
+          <p>AT THE UNIVERSITY OF TEXAS, AUSTIN</p>
+          <div class="p-1"></div>
+          <p>© 2023</p>
+          <div class="p-1"></div>
+          <p class="max-w-sm">
+            This is a paragraph with more information about something important.
+            This something has many uses and is made of 100% recycled material.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
